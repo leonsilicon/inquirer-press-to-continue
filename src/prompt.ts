@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-qualifier */
 
-import type { Interface, Key } from 'node:readline';
-import deepEqual from 'deep-equal';
+import type { Interface } from 'node:readline';
 import InputPromptBase from 'inquirer/lib/prompts/base.js';
 import type inquirer from 'inquirer';
 import observe from 'inquirer/lib/utils/events.js';
@@ -31,7 +30,7 @@ declare module 'inquirer' {
 		/**
 		 * The key the user should press.
 		 */
-		key?: string | Key;
+		key?: string;
 
 		/**
 		 * Whether to allow any key to be pressed.
@@ -59,7 +58,7 @@ declare module 'inquirer' {
 
 class PressToContinuePrompt extends InputPromptBase {
 	declare opt: inquirer.prompts.PromptOptions & {
-		key: string | Key;
+		key: string;
 		enter: boolean;
 		anyKey: boolean;
 		pressToContinueMessage: string;
@@ -104,15 +103,7 @@ class PressToContinuePrompt extends InputPromptBase {
 				this._done(event);
 			} else if (this.opt.enter && event.key.name === 'Enter') {
 				this._done(event);
-			} else if (
-				typeof this.opt.key === 'string' &&
-				event.key.name === this.opt.key
-			) {
-				this._done(event);
-			} else if (
-				this.opt.key === 'object' &&
-				deepEqual(event.key, this.opt.key)
-			) {
+			} else if (event.key.name === this.opt.key) {
 				this._done(event);
 			}
 		});

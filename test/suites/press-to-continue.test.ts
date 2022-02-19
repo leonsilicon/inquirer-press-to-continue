@@ -65,3 +65,23 @@ test('custom message works', async () => {
 
 	expect(key.value).toEqual('y');
 });
+
+test('custom key support with string works', async () => {
+	const stdin = mockStdin.stdin();
+
+	inquirer.registerPrompt('press-to-continue', PressToContinuePrompt);
+
+	setTimeout(() => {
+		stdin.send('x');
+		stdin.send('y');
+	}, 500);
+
+	const { key } = await inquirer.prompt<{ key: KeyDescriptor }>({
+		name: 'key',
+		pressToContinueMessage: 'Press y to continue...',
+		type: 'press-to-continue',
+		key: 'y',
+	});
+
+	expect(key.value).toEqual('y');
+});
