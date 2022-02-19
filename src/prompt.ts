@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-qualifier */
 
-import type { Interface } from 'node:readline';
+import type { Interface, Key } from 'node:readline';
+import deepEqual from 'deep-equal';
 import InputPromptBase from 'inquirer/lib/prompts/base.js';
 import type inquirer from 'inquirer';
 import observe from 'inquirer/lib/utils/events.js';
@@ -28,6 +29,11 @@ declare module 'inquirer' {
 		type: 'press-to-continue';
 
 		/**
+		 * The key the user should press.
+		 */
+		key?: string | Key;
+
+		/**
 		 * Whether to allow any key to be pressed.
 		 */
 		anyKey?: boolean;
@@ -36,6 +42,11 @@ declare module 'inquirer' {
 		 * Only allow enter to be pressed.
 		 */
 		enter?: boolean;
+
+		/**
+		 * Custom message for the "press to continue" loader
+		 */
+		pressToContinueMessage?: string;
 	}
 
 	interface QuestionMap<T extends inquirer.Answers = inquirer.Answers> {
@@ -48,8 +59,10 @@ declare module 'inquirer' {
 
 class PressToContinuePrompt extends InputPromptBase {
 	declare opt: inquirer.prompts.PromptOptions & {
+		key: string | Key;
 		enter: boolean;
 		anyKey: boolean;
+		pressToContinueMessage: string;
 	};
 
 	spinnerIntervalId: NodeJS.Timeout;
@@ -59,17 +72,16 @@ class PressToContinuePrompt extends InputPromptBase {
 	constructor(questions: Question, rl: Interface, answers: Answers) {
 		super(questions, rl, answers);
 
-		if (this.opt.enter && this.opt.anyKey) {
-			throw new Error('Only one of enter or anyKey can be set to true.');
-		}
-
-		// By default, we use "Press any key to continue..."
-		if (this.opt.enter) {
-			this.opt.anyKey = false;
-			this.opt.enter = true;
-		} else {
-			this.opt.anyKey = true;
-			this.opt.enter = false;
+		if (
+			[
+				this.opt.anyKey !== undefined,
+				this.opt.enter !== undefined,
+				this.opt.key !== undefined,
+			].filter((option) => option).length !== 1
+		) {
+			throw new Error(
+				'Exactly one of the options `enter`, `key`, or `anyKey` must be set.'
+			);
 		}
 	}
 
@@ -92,6 +104,16 @@ class PressToContinuePrompt extends InputPromptBase {
 				this._done(event);
 			} else if (this.opt.enter && event.key.name === 'Enter') {
 				this._done(event);
+			} else if (
+				typeof this.opt.key === 'string' &&
+				event.key.name === this.opt.key
+			) {
+				this._done(event);
+			} else if (
+				this.opt.key === 'object' &&
+				deepEqual(event.key, this.opt.key)
+			) {
+				this._done(event);
 			}
 		});
 
@@ -109,10 +131,14 @@ class PressToContinuePrompt extends InputPromptBase {
 	}
 
 	render() {
+		const message =
+			this.opt.pressToContinueMessage ??
+			`Press ${this.opt.enter ? 'enter' : 'any key'} to continue...`;
+
 		const spinner = ora({
 			// Default interval seems a bit glitchy on Alacritty
 			interval: 100,
-			text: `Press ${this.opt.enter ? 'enter' : 'any key'} to continue...`,
+			text: message,
 		});
 
 		this.spinnerIntervalId = setInterval(() => {

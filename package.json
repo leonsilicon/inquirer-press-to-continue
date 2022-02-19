@@ -20,15 +20,22 @@
 		"prettier": "prettier --write src",
 		"tc": "tsc --noEmit"
 	},
+	"dependencies": {
+		"deep-equal": "^2.0.5",
+		"inquirer": "^8.2.0",
+		"ora": "^6.0.1"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^15.0.0",
 		"@leonzalion/configs": "latest",
+		"@types/deep-equal": "^1.0.1",
 		"@types/inquirer": "^8.2.0",
 		"@types/jest": "^27.0.3",
 		"@types/node": "^17.0.0",
 		"eslint": "^8.5.0",
 		"execa": "^6.0.0",
 		"jest": "^27.4.5",
+		"jest-mock-process": "^1.4.1",
 		"lint-staged": "^12.1.3",
 		"lion-git-hooks": "^1.0.2",
 		"lion-system": "latest",
@@ -54,10 +61,6 @@
 	},
 	"resolutions": {
 		"@typescript-eslint/eslint-plugin": "^5.12.1-alpha.14"
-	},
-	"dependencies": {
-		"inquirer": "^8.2.0",
-		"ora": "^6.0.1"
 	},
 	"publishConfig": {
 		"directory": "dist"
