@@ -16,7 +16,7 @@ specifiers:
   lint-staged: ^12.1.3
   lion-git-hooks: ^1.0.2
   lion-system: latest
-  lionp: ^1.0.15
+  lionp: ^1.0.17
   mock-stdin: ^1.0.0
   ora: ^6.0.1
   prettier: ^2.5.1
@@ -41,7 +41,7 @@ devDependencies:
   lint-staged: 12.3.4
   lion-git-hooks: 1.0.3
   lion-system: 1.0.9
-  lionp: 1.0.15
+  lionp: 1.0.17
   mock-stdin: 1.0.0
   prettier: 2.5.1
   ts-jest: 27.1.3_1e2406a8ca2ae3dc934d01f9ee2aebbb
@@ -4666,8 +4666,8 @@ packages:
       pkg-up: 4.0.0
     dev: true
 
-  /lionp/1.0.15:
-    resolution: {integrity: sha512-a1IK4x3TAw8V2uuRHmKJGy8qtCGZroa2kIyxwKawCVYP3m383V7orwxwPAeHB/piUL4P/cft/M6UGeVXoG1XRg==}
+  /lionp/1.0.17:
+    resolution: {integrity: sha512-zH2R08kD2t+tkiQxLtIgGptgW83NiJGyaMTS0wvUaHD/qd57Fyq6H4WINOGlgwCVGoEFC43ew/HV/Yvg2PD32w==}
     engines: {git: '>=2.11.0', node: '>=10', npm: '>=6.8.0'}
     hasBin: true
     dependencies:

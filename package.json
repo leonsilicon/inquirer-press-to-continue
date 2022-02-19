@@ -32,7 +32,7 @@
 		"lint-staged": "^12.1.3",
 		"lion-git-hooks": "^1.0.2",
 		"lion-system": "latest",
-		"lionp": "^1.0.15",
+		"lionp": "^1.0.17",
 		"mock-stdin": "^1.0.0",
 		"prettier": "^2.5.1",
 		"ts-jest": "^27.1.2",
@@ -58,5 +58,8 @@
 	"dependencies": {
 		"inquirer": "^8.2.0",
 		"ora": "^6.0.1"
+	},
+	"publishConfig": {
+		"directory": "dist"
 	}
 }
