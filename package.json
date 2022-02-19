@@ -14,6 +14,7 @@
 		"release": "lionp",
 		"prepare": "lion-git-hooks",
 		"start": "node-ts ./src/index.ts",
+		"build": "node-ts ./scripts/build.ts",
 		"test": "NODE_OPTIONS=--experimental-vm-modules jest",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write src",
