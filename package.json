@@ -30,10 +30,11 @@
 		"lint-staged": "^12.1.3",
 		"lion-git-hooks": "^1.0.2",
 		"lion-system": "latest",
+		"mock-stdin": "^1.0.0",
 		"prettier": "^2.5.1",
 		"ts-jest": "^27.1.2",
 		"ts-jest-resolver": "^2.0.0",
-		"tsc-alias": "^1.5.0",
+		"tsc-alias": "^1.6.1",
 		"typescript": "^4.5.4"
 	},
 	"prettier": "@leonzalion/configs/prettier",
@@ -48,8 +49,11 @@
 			"pnpm run prettier"
 		]
 	},
+	"resolutions": {
+		"@typescript-eslint/eslint-plugin": "^5.12.1-alpha.14"
+	},
 	"dependencies": {
-		"chalk": "^5.0.0",
-		"inquirer": "^8.2.0"
+		"inquirer": "^8.2.0",
+		"ora": "^6.0.1"
 	}
 }
