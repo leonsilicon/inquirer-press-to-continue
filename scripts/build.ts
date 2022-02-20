@@ -1,7 +1,8 @@
 import { execaCommandSync as exec } from 'execa';
-import { copyPackageFiles, chProjectDir } from 'lion-system';
+import { copyPackageFiles, chProjectDir, rmDist } from 'lion-system';
 
 chProjectDir(import.meta.url);
-exec('tsup src/index.ts --format cjs,esm');
+rmDist();
+exec('tsup src/index.ts --format cjs,esm --dts');
 exec('tsc-alias');
 copyPackageFiles();
