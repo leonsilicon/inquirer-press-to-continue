@@ -10,8 +10,7 @@
 		"url": "https://leonzalion.com"
 	},
 	"type": "module",
-	"main": "index.cjs",
-	"module": "index.js",
+	"main": "index.js",
 	"types": "index.d.ts",
 	"scripts": {
 		"release": "lionp",
