@@ -1,6 +1,6 @@
 {
 	"name": "inquirer-press-to-continue",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A \"press any key to continue\" prompt for Inquirer.js",
 	"license": "MIT",
 	"repository": "leonzalion/inquirer-press-to-continue",
