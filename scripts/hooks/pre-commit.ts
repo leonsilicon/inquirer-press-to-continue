@@ -1,8 +1,3 @@
-import process from 'node:process';
-import { execaCommandSync as exec } from 'execa';
+import { preCommit } from 'lion-system';
 
-try {
-	exec('pnpm exec lint-staged', { stdio: 'inherit' });
-} catch {
-	process.exit(1);
-}
+preCommit();
