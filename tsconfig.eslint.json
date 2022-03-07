@@ -7,6 +7,6 @@
 		"scripts",
 		".eslintrc.cjs",
 		".markdownlint.cjs",
-		"jest.config.mjs"
+		"vitest.config.ts"
 	]
 }
