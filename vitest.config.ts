@@ -11,5 +11,9 @@ export default defineConfig({
 		deps: {
 			inline: [/vitest-mock-process/],
 		},
+		isolate: true,
+		restoreMocks: true,
+		mockReset: true,
+		clearMocks: true,
 	},
 });
