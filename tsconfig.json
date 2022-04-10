@@ -1,5 +1,5 @@
 {
-	"extends": "@leonzalion/configs/tsconfig/tsconfig.json",
+	"extends": "@leonzalion/configs/tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
 		"baseUrl": ".",
@@ -7,7 +7,7 @@
 			"~/*": ["./src/*"]
 		},
 		"typeRoots": [
-			"node_modules/@types",
+			"./node_modules/@types",
 			"./typings"
 		]
 	},

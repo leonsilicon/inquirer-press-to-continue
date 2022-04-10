@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-qualifier */
 
-import type { Interface } from 'node:readline';
-import InputPromptBase from 'inquirer/lib/prompts/base.js';
 import type inquirer from 'inquirer';
-import observe from 'inquirer/lib/utils/events.js';
 import type { Answers, Question } from 'inquirer';
+import InputPromptBase from 'inquirer/lib/prompts/base.js';
+import observe from 'inquirer/lib/utils/events.js';
+import type { Interface } from 'node:readline';
 import ora from 'ora';
+
 import type { KeyDescriptor } from '~/types.js';
 
 declare module 'inquirer' {
