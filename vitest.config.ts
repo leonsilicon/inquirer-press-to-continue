@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config';
 import { join } from 'desm';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	resolve: {

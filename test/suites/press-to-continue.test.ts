@@ -1,7 +1,8 @@
 import inquirer from 'inquirer';
-import { test, expect, afterAll } from 'vitest';
-import * as mockProcess from 'vitest-mock-process';
 import * as mockStdin from 'mock-stdin';
+import { afterAll, expect, test } from 'vitest';
+import * as mockProcess from 'vitest-mock-process';
+
 import type { KeyDescriptor } from '~/index.js';
 import PressToContinuePrompt from '~/index.js';
 
