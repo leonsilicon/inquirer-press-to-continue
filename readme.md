@@ -39,6 +39,3 @@ const { key: anyKey } = await inquirer.prompt<{ key: KeyDescriptor }>({
 
 console.log(anyKey.value);
 ```
-
-## TODO
-Isolated the bug to mockStdin
