@@ -1,5 +1,7 @@
 # inquirer-press-to-continue
 
+[![npm version](https://badge.fury.io/js/inquirer-press-to-continue.svg)](https://badge.fury.io/js/inquirer-press-to-continue)
+
 ## Installation
 
 Make sure you have inquirer installed:
