@@ -1,6 +1,6 @@
 # inquirer-press-to-continue
 
-[![npm version](https://badge.fury.io/js/inquirer-press-to-continue.svg)](https://badge.fury.io/js/inquirer-press-to-continue)
+[![npm version](https://img.shields.io/npm/v/inquirer-press-to-continue)](https://npmjs.com/package/inquirer-press-to-continue)
 
 ## Installation
 
