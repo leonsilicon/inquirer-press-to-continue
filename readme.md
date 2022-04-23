@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/inquirer-press-to-continue)](https://npmjs.com/package/inquirer-press-to-continue)
 
 <p align='center'>
-  <img src='/assets/press-to-continue.gif' />
+  <img src='/assets/demo.gif' />
 </p>
 
 ## Installation
