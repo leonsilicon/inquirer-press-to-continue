@@ -18,7 +18,7 @@
 	"scripts": {
 		"release": "lionp",
 		"prepare": "lion-git-hooks",
-		"start": "node-ts ./src/index.ts",
+		"start": "node-ts ./test/bin/start.ts",
 		"build": "node-ts ./scripts/build.ts",
 		"test": "vitest run",
 		"lint": "eslint --cache --fix .",
