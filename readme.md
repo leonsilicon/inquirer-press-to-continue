@@ -11,13 +11,13 @@
 Make sure you have inquirer installed:
 
 ```shell
-pnpm add inquirer
+npm install inquirer
 ```
 
-Then, install `inquirer-press-to-continue` from npm using your package manager (I recommend [pnpm](https://pnpm.io/)):
+Then, install `inquirer-press-to-continue`:
 
 ```shell
-pnpm add inquirer-press-to-continue
+npm install inquirer-press-to-continue
 ```
 
 ## Usage
