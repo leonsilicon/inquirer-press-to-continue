@@ -2,6 +2,10 @@
 
 [![npm version](https://img.shields.io/npm/v/inquirer-press-to-continue)](https://npmjs.com/package/inquirer-press-to-continue)
 
+<p align='center'>
+  <img src='/assets/press-to-continue.gif' />
+</p>
+
 ## Installation
 
 Make sure you have inquirer installed:
@@ -37,7 +41,34 @@ const { key: anyKey } = await inquirer.prompt<{ key: KeyDescriptor }>({
   name: 'key',
   type: 'press-to-continue',
   anyKey: true,
+  pressToContinueMessage: 'Press a key to continue...',
 });
 
 console.log(anyKey.value);
 ```
+
+## API
+
+### key
+
+Type: `string`
+
+The key the user should press to continue.
+
+### anyKey
+
+Type: `boolean`
+
+Whether to allow the user to press any key to continue.
+
+### enter
+
+Type: `boolean`
+
+Only allow the enter key to be pressed.
+
+### pressToContinueMessage
+
+Type: `string`
+
+Custom message for prompting the user to press a key to continue.
