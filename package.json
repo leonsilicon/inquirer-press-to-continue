@@ -31,7 +31,7 @@
 		"desm": "^1.2.0",
 		"execa": "^6.1.0",
 		"inquirer": "^8.2.4",
-		"lionconfig": "^1.7.18",
+		"lionconfig": "^1.7.19",
 		"mock-stdin": "^1.0.0",
 		"typescript": "^4.6.4",
 		"vitest": "^0.10.2",
