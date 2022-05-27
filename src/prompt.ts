@@ -5,7 +5,7 @@ import type { Answers, Question } from 'inquirer';
 import InputPromptBase from 'inquirer/lib/prompts/base.js';
 import observe from 'inquirer/lib/utils/events.js';
 import type { Interface } from 'node:readline';
-import ora from 'ora';
+import ora, { Ora } from 'ora';
 
 import type { KeyDescriptor } from '~/types.js';
 
@@ -65,7 +65,7 @@ class PressToContinuePrompt extends InputPromptBase {
 		pressToContinueMessage: string;
 	};
 
-	spinnerIntervalId: NodeJS.Timeout;
+	spinner?: Ora;
 
 	done: (value: any) => void;
 
@@ -91,7 +91,10 @@ class PressToContinuePrompt extends InputPromptBase {
 		const events = observe(this.rl);
 
 		events.line.subscribe(() => {
-			if (this.opt.enter) {
+			// TODO: find a more elegant solution to remove the extra line (the ora spinner artifact) when user presses enter
+			process.stderr.moveCursor(0, -1);
+			process.stderr.clearLine(1);
+			if (this.opt.enter || this.opt.anyKey) {
 				this._done({
 					key: {
 						name: 'Enter',
@@ -104,8 +107,6 @@ class PressToContinuePrompt extends InputPromptBase {
 		events.keypress.subscribe((event) => {
 			if (this.opt.anyKey) {
 				this._done(event);
-			} else if (this.opt.enter && event.key.name === 'Enter') {
-				this._done(event);
 			} else if (event.key.name === this.opt.key) {
 				this._done(event);
 			}
@@ -117,8 +118,10 @@ class PressToContinuePrompt extends InputPromptBase {
 	}
 
 	_done(key: KeyDescriptor) {
-		if (this.spinnerIntervalId !== undefined) {
-			clearInterval(this.spinnerIntervalId);
+		if (this.spinner?.isSpinning) {
+			const frame = this.spinner.frame();
+			this.spinner.stop();
+			process.stderr.write(frame);
 		}
 
 		this.done(key);
@@ -129,15 +132,9 @@ class PressToContinuePrompt extends InputPromptBase {
 			this.opt.pressToContinueMessage ??
 			`Press ${this.opt.enter ? 'enter' : 'any key'} to continue...`;
 
-		const spinner = ora({
-			// Default interval seems a bit glitchy on Alacritty
-			interval: 100,
+		this.spinner = ora({
 			text: message,
-		});
-
-		this.spinnerIntervalId = setInterval(() => {
-			this.screen.render(spinner.frame(), '');
-		}, spinner.interval);
+		}).start();
 	}
 }
 
