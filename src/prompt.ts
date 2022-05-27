@@ -47,6 +47,11 @@ declare module 'inquirer' {
 		 * Custom message for the "press to continue" loader
 		 */
 		pressToContinueMessage?: string;
+
+		/**
+		 * Custom options to pass to the ora spinner.
+		 */
+		oraOptions?: Ora;
 	}
 
 	interface QuestionMap<T extends inquirer.Answers = inquirer.Answers> {
@@ -63,6 +68,7 @@ class PressToContinuePrompt extends InputPromptBase {
 		enter: boolean;
 		anyKey: boolean;
 		pressToContinueMessage: string;
+		oraOptions: Ora;
 	};
 
 	spinner?: Ora;
@@ -133,8 +139,11 @@ class PressToContinuePrompt extends InputPromptBase {
 			`Press ${this.opt.enter ? 'enter' : 'any key'} to continue...`;
 
 		this.spinner = ora({
+			...this.opt.oraOptions,
 			text: message,
-		}).start();
+		});
+
+		this.spinner.start();
 	}
 }
 
