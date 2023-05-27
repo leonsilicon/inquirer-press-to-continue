@@ -11,8 +11,8 @@ import type { KeyDescriptor } from '~/types.js';
 
 declare module 'inquirer' {
 	interface PressToContinuePromptOptions<
-		T extends inquirer.Answers = inquirer.Answers
-	> extends inquirer.InputQuestionOptions<T> {}
+		T extends Answers = Answers
+	> extends InputQuestionOptions<T> {}
 
 	/**
 	 * Provides options for the `PressToContinuePrompt`.
@@ -21,7 +21,7 @@ declare module 'inquirer' {
 	 * The type of the answers.
 	 */
 
-	interface PressToContinuePrompt<T extends inquirer.Answers = inquirer.Answers>
+	interface PressToContinuePrompt<T extends Answers = Answers>
 		extends PressToContinuePromptOptions<T> {
 		/**
 		 * @inheritdoc
@@ -54,7 +54,7 @@ declare module 'inquirer' {
 		oraOptions?: Ora;
 	}
 
-	interface QuestionMap<T extends inquirer.Answers = inquirer.Answers> {
+	interface QuestionMap<T extends Answers = Answers> {
 		/**
 		 * The `PressToContinuePrompt` type.
 		 */

@@ -3,10 +3,14 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"baseUrl": ".",
+		"rootDir": "./src",
 		"paths": {
-			"~/*": ["./src/*"]
-		},
-		"typeRoots": ["./node_modules/@types", "./typings"]
+			"~/*": [
+				"./src/*"
+			]
+		}
 	},
-	"include": ["./src", "./typings"]
+	"include": [
+		"./src"
+	]
 }
